@@ -1,0 +1,27 @@
+.searchArea{
+	position:absolute;
+	width:100%;
+	text-align:center;
+	top:20%;
+}
+.searchBox{
+	position:relative;
+	width:50%;
+	margin:0 auto;
+}
+#textBox{
+	width:80%;
+	display:inline-block;
+}
+#title{
+	position:absolute;
+	top:10%;
+	text-align: center;
+	width:100%;
+}
+#footer{
+	position:fixed;
+	bottom:5%;
+	text-align:center;
+	width:100%;
+}
