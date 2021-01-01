@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Cmd Quickstart Version 1.0-->
+<!-- Cmd Quickstart Version 1.1-->
 <html>
 <head>
     <meta charset="utf-8">
@@ -16,13 +16,17 @@
 	<center>
 		<h1 id="title">Cmd QuickStart</h1>
 	   <div class="searchArea">
-	   	<span onclick="setGoogleWarn()">
+	   	<span onclick="setGoogleWarn();setDdgWarn()">
 	   		<div class="mdui-tab mdui-tab-centered" mdui-tab id="searchEngineSelect">
 	   			<a href="#" class="mdui-ripple" onclick="baidu()" id="baidu">百度</a>
 	   			<a href="#" class="mdui-ripple" onclick="sogou()" id="sogou">搜狗</a>
 	   			<a href="#" class="mdui-ripple" onclick="google()" id="google">Google</a>
 	   			<a href="#" class="mdui-ripple" onclick="bing()" id="bing">Bing</a>
+	   			<a href="#" class="mdui-ripple" onclick="yandex()" id="yandex">Yandex</a>
+	   			<a href="#" class="mdui-ripple" onclick="duckduckgo()" id="duckduckgo">Duckduckgo</a>
+	   			<a href="#" class="mdui-ripple" onclick="dogedoge()" id="dogedoge">Dogedoge</a>
 	   			<a href="#" class="mdui-ripple" onclick="finderso()" id="finderso">FinderSo</a>
+	   			
 	   		</div>
 	   	</span>
 	   		<br><br>
@@ -34,10 +38,32 @@
 		   		
 	   		</div>
 	   		<br>
-			<p id="googleWarn">温馨提示：由于中国大陆地区的相关政策原因，Google搜索将无法正常使用。感谢您的支持！</p>
+			<p id="googleWarn">
+				温馨提示：由于中国大陆地区的相关政策原因，Google搜索将无法正常使用。感谢您的支持！
+			</p>
+			<p id="ddgWarn">
+				温馨提示：由于中国大陆地区的相关政策原因，Duckduckgo搜索将无法正常使用。感谢您的支持！
+			</p>
 	   </div>
 	   
     </center>
+    
+    <div class="mdui-fab-wrapper" id="outFab">
+    <button mdui-dialog="{target: '#settings'}" class="mdui-fab mdui-color-theme-accent mdui-ripple mdui-fab-fixed" id="fab">
+    	<i  class="mdui-icon material-icons">settings</i>
+    </button>
+    </div>
+    
+    <div class="mdui-dialog" id="settings">
+    	<div style='margin:20px'>
+    	<h2>设置</h2>
+    	记住上次搜索内容
+    	<label class="mdui-switch" style="float:right;clear:right">
+		<input type="checkbox" id="rememberText" onclick="saveSettings()">
+		<i class="mdui-switch-icon"></i>
+		</label>
+		</div>
+	</div>
     <footer id="footer">
     	Copyright (C) 2019-2021 Cmd_MEMZ. All rights reserved.
     </footer>

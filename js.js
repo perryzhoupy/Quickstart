@@ -13,6 +13,15 @@ function bing(){
 function finderso(){
 	$.cookie('engine','finderso',{expires:7});
 }
+function yandex(){
+	$.cookie('engine','yandex',{expires:7});
+}
+function duckduckgo(){
+	$.cookie('engine','duckduckgo',{expires:7});
+}
+function dogedoge(){
+	$.cookie('engine','dogedoge',{expires:7});
+}
 
 function go(){
 	var se=escape($.cookie('engine'));
@@ -27,7 +36,22 @@ function go(){
 		window.open("//www.bing.com/search?q=" + wd);
 	}else if(se=='finderso'){
 		window.open('//finderso.cmdmemz.cn/s.php?keyword=' + wd);
+	}else if(se=='yandex'){
+		window.open('//yandex.com/search/?text=' + wd);
+	}else if(se=='duckduckgo'){
+		window.open('//duckduckgo.com/?q=' + wd);
+	}else if(se=='dogedoge'){
+		window.open('//www.dogedoge.com/results?q=' + wd);
 	}
+}
+
+function rLS(){
+	var text=$('#textBox').val();
+	$.cookie('text',text,{expires:7});
+}
+function rLSStart(){
+	$('#textBox').val($.cookie('text'));
+	$('#rememberText')[0].checked = 'true';
 }
 function setGoogleWarn(){
 		if($('#google').hasClass('mdui-tab-active')){
@@ -37,7 +61,31 @@ function setGoogleWarn(){
 		}
 		
 	}
+	function setDdgWarn(){
+		if($('#duckduckgo').hasClass('mdui-tab-active')){
+			$('#ddgWarn').css('display','');
+		}else{
+			$('#ddgWarn').css('display','none');
+		}
+		
+	}
+	
+function saveSettings(){
+	$.cookie('settingRememberText',$('#rememberText')[0].checked,{expires:1145141919810});
+}
+	
 $(document).ready(function(){
+	
+	if(window.screen.availHeight * window.screen.availWidth < 200000){
+		$('#yandex').hide();
+		$('#duckduckgo').hide();
+		$('#dogedoge').hide();
+		$('#google').hide();
+	}else if(window.screen.availHeight * window.screen.availWidth < 600000){
+		$('#yandex').hide();
+		$('#duckduckgo').hide();
+		$('#dogedoge').hide();
+	}
 	$("#textBox").keyup(function(event){
 		if(event.which == 13){
 			go();
@@ -50,4 +98,12 @@ $(document).ready(function(){
 	var searchEngine = new mdui.Tab("#searchEngineSelect");
 	searchEngine.show($.cookie('engine'));
 	setGoogleWarn();
+	setDdgWarn();
+	if($.cookie('settingRememberText')=='true'){
+		
+		rLSStart();
+	}
+	
+	var inst = new mdui.Fab('#fab');
+	addEventListener('change',rLS);
 });
